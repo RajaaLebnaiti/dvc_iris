@@ -9,11 +9,11 @@ X = df.drop("species", axis= 1)
 y = df["species"]
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, random_state= 42)
-hyper_pram = json.load(open("models/rfc_best_params.json"))
-
+hyper_pram = json.load(open("models/rfc_best_params.json", "r"))
+print(hyper_pram)
 n_estimators = hyper_pram["n_estimators"]
 max_depth = hyper_pram["max_depth"]
-model = RandomForestClassifier(n_estimators, max_depth)
+model = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth)
 model.fit(X_train, y_train)
 y_preds = model.predict(X_test)
 acc = accuracy_score(y_test, y_preds)

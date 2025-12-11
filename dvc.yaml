@@ -3,7 +3,7 @@ stages:
   preprocess:
     cmd: python src/preprocess.py 
     deps:
-      - data.iris.csv
+      - data/iris.csv
       - src/preprocess.py
     outs:
       - data/clean_iris.csv

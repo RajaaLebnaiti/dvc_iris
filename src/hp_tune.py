@@ -24,5 +24,5 @@ y_preds = grid_search.predict(X_test)
 acc = accuracy_score(y_test, y_preds)
 
 
-with open("models/rfc_best_params", "w") as outfile:
+with open("models/rfc_best_params.json", "w") as outfile:
     json.dump(best_params, outfile)
