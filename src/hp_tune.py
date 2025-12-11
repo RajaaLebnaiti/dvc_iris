@@ -25,4 +25,4 @@ acc = accuracy_score(y_test, y_preds)
 
 
 with open("models/rfc_best_params.json", "w") as outfile:
-    json.dump(best_params, outfile)
+    json.dump(best_params, outfile, indent=2)
