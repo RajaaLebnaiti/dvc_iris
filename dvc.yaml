@@ -1,0 +1,31 @@
+stages:
+
+  preprocess:
+    cmd: python src/preprocess.py 
+    deps:
+      - data.iris.csv
+      - src/preprocess.py
+    outs:
+      - data/clean_iris.csv
+
+  hp_tune:
+    cmd: python src/hp_tune.py
+    deps:
+      - data/clean_iris.csv
+      - configs/hp_config.json
+      - src/hp_tune.py
+    outs:
+      - models/rfc_best_params.json:
+          cache: false
+
+  train:
+    cmd: python src/train.py
+    deps: 
+      - data/clean_iris.csv
+      - src/train.py
+      - models/rfc_best_params.json
+    outs:
+      - model.pkl
+    metrics:
+      - metrics.json:
+          cache: false
